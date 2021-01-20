@@ -13,34 +13,42 @@ function getImages(string) {
 	while ((match = rex.exec(string))) {
 		urls.push(match[1]);
 	}
+
 	return urls;
 }
 
 async function downloadImg(imgUrl, imgName) {
-	const pathToMemes = path.resolve(__dirname, 'memes-are-life', imgName);
+	const pathToMemes = path.resolve(
+		__dirname,
+		'memes-are-life',
+		`${imgName}.png`,
+	);
 
 	const response = await fetch(imgUrl);
-	// const buffer = await response.buffer();
-	// fs.writeFile(pathToMemes, buffer, () => console.log('finished downloading!'));
+	const buffer = await response.buffer();
 
-	const fileStream = fs.createWriteStream(pathToMemes);
-	await new Promise((resolve, reject) => {
-		response.body.pipe(fileStream);
-		response.body.on('error', reject);
-		fileStream.on('finish', resolve);
-	});
+	fs.writeFile(pathToMemes, buffer, () => console.log('finished downloading!'));
 }
 
-fetch(url)
-	.then((res) => res.text())
-	.then((body) => {
-		const imgs = getImages(body);
+function generateName() {
+	return JSON.stringify(Math.random());
+}
 
-		if (!fs.existsSync(dir)) {
-			fs.mkdirSync(dir);
-		}
+async function scrapeMemes() {
+	const res = await fetch(url);
+	const body = await res.text();
 
-		for (let i = 0; i < 10; i++) {
-			downloadImg(imgs[i], JSON.stringify(Math.random()));
-		}
-	});
+	const imgs = getImages(body);
+
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir);
+	}
+
+	for (let i = 0; i < 10; i++) {
+		const imgName = generateName();
+		const imageUrl = imgs[i];
+		await downloadImg(imageUrl, imgName);
+	}
+}
+
+scrapeMemes();
