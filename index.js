@@ -1,9 +1,10 @@
 const fs = require('fs');
-const dir = './memes-are-life';
 const path = require('path');
 const fetch = require('node-fetch');
+const cliProgress = require('cli-progress');
 
 const url = 'https://memegen-link-examples-upleveled.netlify.app/';
+const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
 function getImages(string) {
 	let match;
@@ -18,16 +19,14 @@ function getImages(string) {
 }
 
 async function downloadImg(imgUrl, imgName) {
-	const pathToMemes = path.resolve(
-		__dirname,
-		'memes-are-life',
-		`${imgName}.png`,
-	);
+	const pathToMemes = path.resolve(__dirname, 'memes', `${imgName}.png`);
 
 	const response = await fetch(imgUrl);
 	const buffer = await response.buffer();
 
-	fs.writeFile(pathToMemes, buffer, () => console.log('finished downloading!'));
+	await fs.writeFile(pathToMemes, buffer, () => {
+		bar1.increment(10);
+	});
 }
 
 function generateName() {
@@ -40,15 +39,20 @@ async function scrapeMemes() {
 
 	const imgs = getImages(body);
 
+	const dir = './memes';
+
 	if (!fs.existsSync(dir)) {
 		fs.mkdirSync(dir);
 	}
 
+	bar1.start(100, 0);
 	for (let i = 0; i < 10; i++) {
 		const imgName = generateName();
 		const imageUrl = imgs[i];
 		await downloadImg(imageUrl, imgName);
 	}
+	bar1.update(100);
+	bar1.stop();
 }
 
 scrapeMemes();
