@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const cliProgress = require('cli-progress');
+const { createMeme, listMemes } = require('./memeMaker');
 
 const url = 'https://memegen-link-examples-upleveled.netlify.app/';
 const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
@@ -55,4 +56,14 @@ async function scrapeMemes() {
 	bar1.stop();
 }
 
-scrapeMemes();
+const topText = process.argv[2];
+const bottomText = process.argv[3];
+const memeName = process.argv[4];
+
+if (topText && bottomText && memeName) {
+	createMeme(topText, bottomText, memeName);
+} else if (process.argv[2] === '--help') {
+	listMemes();
+} else {
+	scrapeMemes();
+}
