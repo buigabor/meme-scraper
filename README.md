@@ -32,12 +32,12 @@ node index.js
 
 Scrapes the first 10 images into a folder called "memes"
 
-<img src='./img/memes-folder.png' width='400'>
+<img src='./img/memes-folder.png' width='200'>
 
 ```
 node index.js top-text-my-meme bottom-text-my-meme snek
 ```
 
-After providing the top and bottom text and name of the meme, it will create it for you and save it to 'my-memes' folder.
+After providing the top and bottom text and also the name of the meme, it will create it for you and save it to 'my-memes' folder. Use '-' if you want spaces between your texts. (Eg. top-text-for-my-meme === TOP TEXT FOR MY MEME)
 
 <img src='./img/snek-meme.png' width='400'>
