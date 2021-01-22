@@ -2,7 +2,7 @@
 
 An application that scrapes this website:
 
-memegen-link-examples-upleveled.netlify.app
+https://memegen-link-examples-upleveled.netlify.app/
 
 and saves the first 10 images into a folder called "memes" within the directory of the new project.
 
@@ -22,7 +22,7 @@ yarn install
 node index.js --help
 ```
 
-It lists all the meme names fetched from (https://api.memegen.link/templates). You can also check which meme slug name belongs to which meme on the previously provided API link.
+It lists all the meme names fetched from https://api.memegen.link/templates. You can also check which meme slug name belongs to which meme on the previously provided API link.
 
 <img>
 
@@ -34,11 +34,9 @@ Scrapes the first 10 images into a folder called "memes"
 
 <img>
 
-
 ```
 node index.js topText bottomText memeName
 ```
-
 
 ```
 node index.js create-meme
