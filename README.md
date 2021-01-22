@@ -24,7 +24,7 @@ node index.js --help
 
 It lists all the meme names fetched from https://api.memegen.link/templates. You can also check which meme slug name belongs to which meme on the previously provided API link.
 
-<img>
+<img src='./img/list-of-memes.png'>
 
 ```
 node index.js
@@ -32,9 +32,12 @@ node index.js
 
 Scrapes the first 10 images into a folder called "memes"
 
-<img>
+<img src='./img/memes-folder.png'>
 
 ```
 node index.js top-text-my-meme bottom-text-my-meme snek
 ```
+
 After providing the top and bottom text and name of the meme, it will create it for you and save it to 'my-memes' folder.
+
+<img src='./img/snek-meme.png'>

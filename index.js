@@ -56,11 +56,14 @@ async function scrapeMemes() {
 	bar1.stop();
 }
 
-const topText = process.argv[2];
-const bottomText = process.argv[3];
+let topText = process.argv[2];
+let bottomText = process.argv[3];
 const memeName = process.argv[4];
 
 if (topText && bottomText && memeName) {
+	topText = topText.split('-').join(' ');
+	bottomText = bottomText.split('-').join(' ');
+
 	createMeme(topText, bottomText, memeName);
 } else if (process.argv[2] === '--help') {
 	listMemes();

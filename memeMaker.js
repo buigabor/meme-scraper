@@ -35,7 +35,7 @@ async function createMeme(topText, bottomText, memeName) {
 	const memeTemp = await fetchMemeTemplate(memeTemplateURL, memeName);
 
 	// Set meme parameters
-	let options = {
+	const options = {
 		imageURL: `${memeTemp.blank}`, // URL to image
 		topText, // top text of meme
 		bottomText, // bottom text of meme
@@ -55,7 +55,7 @@ async function listMemes() {
 	const memeSlugs = memesTemps.map((memeTemp) => {
 		return memeTemp.key;
 	});
-	console.log(memeSlugs);
+	console.dir(memeSlugs, { maxArrayLength: null });
 }
 
 module.exports = { createMeme, listMemes };
