@@ -35,9 +35,6 @@ Scrapes the first 10 images into a folder called "memes"
 <img>
 
 ```
-node index.js topText bottomText memeName
+node index.js top-text-my-meme bottom-text-my-meme snek
 ```
-
-```
-node index.js create-meme
-```
+After providing the top and bottom text and name of the meme, it will create it for you and save it to 'my-memes' folder.
