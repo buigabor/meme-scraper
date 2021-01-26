@@ -2,6 +2,9 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const memeCreator = require('meme-creator');
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const jimp = require('jimp');
+
 const memeTemplateURL = 'https://api.memegen.link/templates';
 
 async function fetchMemeTemplate(url, memeName) {
