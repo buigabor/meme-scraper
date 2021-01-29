@@ -26,8 +26,7 @@
   },
   "dependencies": {
     "cli-progress": "^3.8.2",
-    "jimp": "^0.16.1",
-    "meme-creator": "^1.0.6",
+    "meme-creator": "^1.0.7",
     "node-fetch": "^2.6.1"
   }
 }
