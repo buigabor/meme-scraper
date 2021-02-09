@@ -6,9 +6,11 @@
   "author": "Bui Gábor <bui.gabor97@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/cli-progress": "^3.8.0",
+    "@types/node-fetch": "^2.5.8",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
-    "@upleveled/eslint-config-upleveled": "1.5.1",
+    "@upleveled/eslint-config-upleveled": "1.6.0",
     "babel-eslint": "^10.0.0",
     "eslint": "^7.5.0",
     "eslint-config-react-app": "6.0.0",
@@ -26,6 +28,7 @@
   },
   "dependencies": {
     "cli-progress": "^3.8.2",
+    "jimp": "^0.16.1",
     "meme-creator": "^1.0.7",
     "node-fetch": "^2.6.1"
   }
